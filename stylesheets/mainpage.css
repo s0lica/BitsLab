@@ -2,7 +2,9 @@
     padding: 0;
     margin: 0;
     box-sizing: 0;
-    font-family: 'Josefin Sans',monospace;
+    font-family: "Aldrich", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 .bigdiv{
     height:100vh;
@@ -17,7 +19,7 @@ nav{
     padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 1%;
-    border-bottom: solid 1px silver;
+    border-bottom: solid 3px #6a6b70;
 }
 .logo{
     color:#007a7a;
@@ -35,7 +37,7 @@ nav ul li{
 }
 nav ul li a{
     text-decoration: none;
-    color:#037d7a;
+    color:#6a6b70;
     font-weight: bold;
 }
 
