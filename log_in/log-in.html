@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,14 @@
     <link rel="stylesheet" href="./log-instylesheets/log-instyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    <body>
-        <div class="bigdiv">
-            <nav>
+
+<body>
+    <div class="bigdiv">
+        <nav>
             <h2 class="logo"><a href="../index.html">BitsLab<a></h2>
             <ul>
                 <li><a href="../problems/probleme.html">Probleme</a></li>
@@ -19,24 +23,31 @@
                 <li><a href="#">Sign Up</a></li>
                 <li><a href="./log-in.html">Login</a></li>
             </ul>
-            </nav>
-            <div id="login-form">
+        </nav>
+        <div class="wrapper">
+            <form action="">
                 <h1>Login</h1>
-                <div>
-                    <input id="userbox" class="input-box" type="text" placeholder="Username" required>    
-                </div>    
-                <div>
-                    <input id="passwordbox" class="input-box" type="password" placeholder="Password" required>    
-                </div>    
-                <div class="remember-forgot">
-                        <label><input type="checkbox">Remember me</label>
-                        <a href="#">Forgot password?</a>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="remember-forget">
+                    <label for=""><input type="checkbox">Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="register-link">
-                        <p>Don't have an account?<a href="#">Register</a></p>
-                    </div>
-            </div>
+                    <p>Don't have an account? <a href="">
+                            Register</a></p>
+                </div>
+            </form>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
