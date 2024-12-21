@@ -6,14 +6,14 @@
     font-weight: 400;
     font-style: normal;
 }
-.bigdiv{
+.bigdiv{    
     height:100vh;
     width: 100%;
     background-color: #1f1f1f;
 }
 nav{
-    position: sticky;
     top:0;
+    position: sticky;
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +24,6 @@ nav{
     border-bottom: solid 3px #6a6b70;
 }
 .logo{
-    font-weight: 900;
     color:#007a7a;
     font-size:40px;
 }
@@ -56,4 +55,39 @@ nav h2 a{
 hr{
     width: 100%;
     color:silver;
+}
+#login-form{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top:13%;
+    border: 1px solid white;
+    width:30%;
+    height:40%;
+}
+
+#login-form h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color:#6a6b70;
+}
+
+.input-box{
+    width: 20%;
+    font-size:40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#6a6b70;
+}
+
+#userbox{
+    margin-top:2%;
+    margin-bottom: 2%;
+}
+#passwordbox{
+    margin-bottom: 2%;
 }
