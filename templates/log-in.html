@@ -16,23 +16,23 @@
 <body>
     <div class="bigdiv">
         <nav>
-            <h2 class="logo"><a href="./index.html">BitsLab<a></h2>
+            <h2 class="logo"><a href="/index">BitsLab<a></h2>
             <ul>
-                <li><a href="./probleme.html">Probleme</a></li>
+                <li><a href="/probleme">Probleme</a></li>
                 <li><a href="#">Concursuri</a></li>
-                <li><a href="./sign_up.html">Sign Up</a></li>
-                <li><a href="./log-in.html">Login</a></li>
+                <li><a href="/sign_up">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
         </nav>
         <div class="wrapper">
-            <form action="">
+            <form name="login_user" action="/login_user" method="POST">
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input name="username" type="text" placeholder="Username" required>
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input name="password" type="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
                 <div class="remember-forgot">
@@ -40,7 +40,7 @@
                     </label>
                     <a href="#">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn" value="submit">Login</button>
                 <div class="register-link">
                     <p>Don't have an account? <a href="../sign_up/sign_up.html">
                             Register</a></p>
