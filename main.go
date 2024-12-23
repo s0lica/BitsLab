@@ -1,4 +1,4 @@
-// / Routes and user parsing + user querying
+// / Routes
 
 package main
 
