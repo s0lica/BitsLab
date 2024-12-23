@@ -1,4 +1,4 @@
-module modul
+module github.com/s0lica/BitsLab
 
 go 1.23.4
 
