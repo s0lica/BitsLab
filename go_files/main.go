@@ -1,3 +1,5 @@
+// / Routes and user parsing + user querying
+
 package main
 
 import (
@@ -93,11 +95,11 @@ func login_user(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("stylesheets"))))
-	http.HandleFunc("/", login)
+	http.HandleFunc("/login", login)
 	http.HandleFunc("/sign_up", sign_up)
 	http.HandleFunc("/login_user", login_user)
 	http.HandleFunc("/sign_up_user", sign_up_user)
-	http.HandleFunc("/index", index)
+	http.HandleFunc("/", index)
 	http.HandleFunc("/probleme", problem)
 	http.ListenAndServe(":8000", nil)
 }
