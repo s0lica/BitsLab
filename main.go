@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/s0lica/BitsLab/dbbuilder"
 	"github.com/s0lica/BitsLab/internal/auth"
 )
 
@@ -38,5 +39,6 @@ func main() {
 	http.HandleFunc("/Sign_up_user", auth.Sign_up_user)
 	http.HandleFunc("/", index)
 	http.HandleFunc("/probleme", problem)
+	dbbuilder.Build_databases()
 	http.ListenAndServe(":8000", nil)
 }
