@@ -11,6 +11,7 @@ import (
 
 func add_user(name string, email string, username string, password string, repassword string) bool {
 	db, err := sql.Open("mysql", "root:#David2007vasiliu@tcp(127.0.0.1)/BitsLab")
+	fmt.Println(1)
 	if password != repassword {
 		return false
 	}
@@ -63,6 +64,7 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(username)
 	fmt.Println(pass)
 	if check_user(username[0], pass[0]) {
+
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, nil)
 	} else {

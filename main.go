@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/s0lica/BitsLab/go_files/internal/auth"
+	"github.com/s0lica/BitsLab/internal/auth"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
