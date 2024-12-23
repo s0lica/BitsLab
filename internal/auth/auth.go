@@ -71,6 +71,4 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 		var tmpl = template.Must(template.ParseFiles("templates/probleme.html"))
 		tmpl.Execute(w, nil)
 	}
-	var geani = 10
-	fmt.Println(geani)
 }
