@@ -6,8 +6,23 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/gorilla/sessions"
+
 	_ "github.com/go-sql-driver/mysql"
+	"golang.org/x/crypto/bcrypt"
 )
+
+var store = sessions.NewCookieStore([]byte("super-secret-key"))
+
+func hashPassword(plain string) (string, error) {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(plain), bcrypt.DefaultCost)
+	return string(bytes), err
+}
+
+func checkPasswordHash(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
+}
 
 func add_user(name string, email string, username string, password string, repassword string) bool {
 	db, err := sql.Open("mysql", "root:#David2007vasiliu@tcp(127.0.0.1)/BitsLab")
@@ -61,15 +76,28 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var username = r.Form["username"]
 	var pass = r.Form["password"]
-	fmt.Println(username)
-	fmt.Println(pass)
 	if check_user(username[0], pass[0]) {
-
+		session, _ := store.Get(r, "bitslab-session")
+		session.Values["authenticated"] = true
+		session.Values["username"] = username
+		err := session.Save(r, w)
+		if err != nil {
+			panic(err)
+		}
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, nil)
 	} else {
 		var tmpl = template.Must(template.ParseFiles("templates/probleme.html"))
 		tmpl.Execute(w, nil)
 	}
-	///geani
+}
+
+func LogoutHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "bitslab-session")
+	for k := range session.Values {
+		delete(session.Values, k)
+	}
+	session.Save(r, w)
+	var tmpl = template.Must(template.ParseFiles("templates/index.html"))
+	tmpl.Execute(w, nil)
 }
