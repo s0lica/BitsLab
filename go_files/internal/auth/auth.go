@@ -40,7 +40,7 @@ func check_user(username string, password string) bool {
 	return exists
 }
 
-func sign_up_user(w http.ResponseWriter, r *http.Request) {
+func Sign_up_user(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var username = r.Form["username"]
 	var email = r.Form["email"]
@@ -56,7 +56,7 @@ func sign_up_user(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func login_user(w http.ResponseWriter, r *http.Request) {
+func Login_user(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var username = r.Form["username"]
 	var pass = r.Form["password"]
