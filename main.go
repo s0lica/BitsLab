@@ -39,6 +39,7 @@ func main() {
 	http.HandleFunc("/Sign_up_user", auth.Sign_up_user)
 	http.HandleFunc("/", index)
 	http.HandleFunc("/probleme", problem)
+	http.HandleFunc("/logouthandle", auth.LogoutHandler)
 	dbbuilder.Build_databases()
 	http.ListenAndServe(":8000", nil)
 }

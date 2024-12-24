@@ -21,8 +21,13 @@
             <ul>
                 <li><a href="/probleme">Probleme</a></li>
                 <li><a href="#">Concursuri</a></li>
+                {{if .username}}
+                <li><a href="/logouthandle">Log Out</a></li>
+                <li><a href="#">{{.username}}</a></li>
+                {{else}}
                 <li><a href="/sign_up">Sign Up</a></li>
                 <li><a href="/login">Login</a></li>
+                {{end}}
             </ul>
         </nav>
     </div>

@@ -86,7 +86,10 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
-		tmpl.Execute(w, nil)
+		data := map[string]string{
+			"username": username[0],
+		}
+		tmpl.Execute(w, data)
 	} else {
 		data := map[string]string{
 			"Error": "Invalid credentials!",
