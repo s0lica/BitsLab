@@ -67,8 +67,7 @@ func Sign_up_user(w http.ResponseWriter, r *http.Request) {
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, nil)
 	} else {
-		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
-		tmpl.Execute(w, nil)
+		http.Error(w, "Invalid credentials", http.StatusForbidden)
 	}
 }
 
