@@ -25,17 +25,19 @@ func checkPasswordHash(password, hash string) bool {
 }
 
 func add_user(name string, email string, username string, password string, repassword string) bool {
+	if check_user(username, password) != false {
+		return false
+	}
 	db, err := sql.Open("mysql", "root:#David2007vasiliu@tcp(127.0.0.1)/BitsLab")
-	fmt.Println(1)
 	if password != repassword {
 		return false
 	}
 	if err != nil {
-		panic(err)
+		return false
 	}
 	add, err := db.Query("INSERT INTO Users(Name,Email,Username,Password) VALUES (?,?,?,?)", (name), (email), (username), (password))
 	if err != nil {
-		panic(err)
+		return false
 	}
 	fmt.Println(add)
 	defer db.Close()
@@ -67,7 +69,7 @@ func Sign_up_user(w http.ResponseWriter, r *http.Request) {
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, nil)
 	} else {
-		http.Error(w, "Invalid credentials", http.StatusForbidden)
+		http.Error(w, "Either your password and confirmed password don't match, or an account with this username already exists.", http.StatusForbidden)
 	}
 }
 
@@ -86,8 +88,11 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, nil)
 	} else {
-		var tmpl = template.Must(template.ParseFiles("templates/probleme.html"))
-		tmpl.Execute(w, nil)
+		data := map[string]string{
+			"Error": "Invalid credentials.",
+		}
+		var tmpl = template.Must(template.ParseFiles("templates/log-in.html"))
+		tmpl.Execute(w, data)
 	}
 }
 
