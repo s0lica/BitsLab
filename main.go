@@ -32,7 +32,7 @@ func problem(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("stylesheets"))))
+	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/sign_up", sign_up)
 	http.HandleFunc("/Login_user", auth.Login_user)

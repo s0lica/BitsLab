@@ -27,16 +27,11 @@
         <div class="wrapper">
             <form name="Login_user" action="/Login_user" method="POST">
                 <h1>Login</h1>
-                {{if .Error}}
-                <div class="error-box">
-                    <p>{{.Error}}</p>
-                </div>
-                {{end}}
-                <div class="input-box">
+                <div class="input-box" id="user">
                     <input name="username" type="text" placeholder="Username" required>
                     <i class='bx bxs-user'></i>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="pass">
                     <input name="password" type="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
@@ -46,6 +41,11 @@
                     <a href="#">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn" value="submit">Login</button>
+                {{if .Error}}
+                <div id="error-box">
+                    <p>{{.Error}}</p>
+                </div>
+                {{end}}
                 <div class="register-link">
                     <p>Don't have an account? <a href="/sign_up">
                             Register</a></p>

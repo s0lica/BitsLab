@@ -51,7 +51,7 @@ func check_user(username string, password string) bool {
 	}
 	var exists bool
 	var query string
-	query = fmt.Sprintf("SELECT EXISTS (SELECT Name FROM Users WHERE Name='%s' AND Password='%s')", (username), (password))
+	query = fmt.Sprintf("SELECT EXISTS (SELECT Name FROM Users WHERE Username='%s' AND Password='%s')", (username), (password))
 	row := db.QueryRow(query).Scan(&exists)
 	fmt.Println(row)
 	defer db.Close()
@@ -89,7 +89,7 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, nil)
 	} else {
 		data := map[string]string{
-			"Error": "Invalid credentials.",
+			"Error": "Invalid credentials!",
 		}
 		var tmpl = template.Must(template.ParseFiles("templates/log-in.html"))
 		tmpl.Execute(w, data)
