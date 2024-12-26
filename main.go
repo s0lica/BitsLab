@@ -41,6 +41,16 @@ func Problem(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
+func Userpage(w http.ResponseWriter, r *http.Request) {
+	session, _ := auth.Store.Get(r, "bitslab-session")
+	username := session.Values["username"]
+	data := map[string]interface{}{
+		"username": username,
+	}
+	var tmpl = template.Must(template.ParseFiles("templates/userpage.html"))
+	tmpl.Execute(w, data)
+}
+
 func main() {
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
 	http.HandleFunc("/login", Login)
@@ -50,6 +60,7 @@ func main() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/probleme", Problem)
 	http.HandleFunc("/logouthandle", auth.LogoutHandler)
+	http.HandleFunc("/user", auth.AuthRequired(Userpage))
 	dbbuilder.Build_databases()
 	http.ListenAndServe(":8000", nil)
 }
