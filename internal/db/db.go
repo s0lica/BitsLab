@@ -17,3 +17,7 @@ func InitDB() {
 	}
 	log.Println("Connected to DB successfully!")
 }
+
+func CloseDB() {
+	DB.Close()
+}

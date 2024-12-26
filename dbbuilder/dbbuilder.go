@@ -13,7 +13,13 @@ func Build_databases() {
 		panic(err)
 	}
 	var query string
-	query = "CREATE TABLE IF NOT EXISTS Users(uid int AUTO_INCREMENT PRIMARY KEY, Name VARCHAR(500), Email VARCHAR(500), Username VARCHAR(500) ,Password VARCHAR(500))"
+	query = `CREATE TABLE IF NOT EXISTS Users
+	(uid int AUTO_INCREMENT PRIMARY KEY, 
+	Name VARCHAR(500), 
+	Email VARCHAR(500), 
+	Username VARCHAR(500), 
+	Password VARCHAR(500),
+	IsAdmin bool DEFAULT false)`
 	create, err := db.Exec(query)
 	if err != nil {
 		panic(err)
@@ -24,5 +30,21 @@ func Build_databases() {
 	create, err = db.Exec(query)
 	if err != nil {
 		panic(err)
+	}
+	query = `CREATE TABLE IF NOT EXISTS Problems 
+	(ID bigint AUTO_INCREMENT PRIMARY KEY, 
+	created_at timestamp NOT NULL DEFAULT NOW(),
+	name text NOT NULL,
+	test_name text NOT NULL,
+	time_limit double NOT NULL,
+	memory_limit int NOT NULL,
+	source_size int NOT NULL, 
+	console_input bool,
+	visible bool,
+	visible_tests bool,
+	task_description text)`
+	create, err = db.Exec(query)
+	if err != nil {
+		fmt.Println(err)
 	}
 }
