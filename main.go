@@ -62,7 +62,9 @@ func Create_problem(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	//STYLESHEETS
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
+	//ROUTING NO LOGIN
 	http.HandleFunc("/login", Login)
 	http.HandleFunc("/sign_up", Sign_up)
 	http.HandleFunc("/Login_user", auth.Login_user)
@@ -70,8 +72,12 @@ func main() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/probleme", Problem)
 	http.HandleFunc("/logouthandle", auth.LogoutHandler)
+	//ROUTING AUTHREQUIRED
 	http.HandleFunc("/user", auth.AuthRequired(Userpage))
+	//ROUTING ADMINREQUIRED
 	http.HandleFunc("/admin/create_problem", auth.AdminRequired(Create_problem))
+	//TABLES BUILDER
 	dbbuilder.Build_databases()
+	//sv start
 	http.ListenAndServe(":8000", nil)
 }
