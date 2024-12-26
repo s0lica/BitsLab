@@ -80,7 +80,7 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 	if check_user(username[0], pass[0]) {
 		session, _ := Store.Get(r, "bitslab-session")
 		session.Values["authenticated"] = true
-		session.Values["username"] = username
+		session.Values["username"] = username[0]
 		err := session.Save(r, w)
 		if err != nil {
 			panic(err)
