@@ -12,7 +12,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var store = sessions.NewCookieStore([]byte("super-secret-key"))
+var Store = sessions.NewCookieStore([]byte("super-secret-key"))
 
 func hashPassword(plain string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(plain), bcrypt.DefaultCost)
@@ -78,17 +78,19 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 	var username = r.Form["username"]
 	var pass = r.Form["password"]
 	if check_user(username[0], pass[0]) {
-		session, _ := store.Get(r, "bitslab-session")
+		session, _ := Store.Get(r, "bitslab-session")
 		session.Values["authenticated"] = true
 		session.Values["username"] = username
 		err := session.Save(r, w)
 		if err != nil {
 			panic(err)
 		}
-		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
-		data := map[string]string{
-			"username": username[0],
+		session, _ = Store.Get(r, "bitslab-session")
+		username := session.Values["username"]
+		data := map[string]interface{}{
+			"username": username,
 		}
+		var tmpl = template.Must(template.ParseFiles("templates/index.html"))
 		tmpl.Execute(w, data)
 	} else {
 		data := map[string]string{
@@ -100,7 +102,7 @@ func Login_user(w http.ResponseWriter, r *http.Request) {
 }
 
 func LogoutHandler(w http.ResponseWriter, r *http.Request) {
-	session, _ := store.Get(r, "bitslab-session")
+	session, _ := Store.Get(r, "bitslab-session")
 	for k := range session.Values {
 		delete(session.Values, k)
 	}

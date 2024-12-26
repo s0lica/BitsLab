@@ -1,4 +1,4 @@
-// / Routes
+/// Routes
 
 package main
 
@@ -11,34 +11,44 @@ import (
 	"github.com/s0lica/BitsLab/internal/auth"
 )
 
-func index(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, r *http.Request) {
+	session, _ := auth.Store.Get(r, "bitslab-session")
+	username := session.Values["username"]
+	data := map[string]interface{}{
+		"username": username,
+	}
 	var tmpl = template.Must(template.ParseFiles("templates/index.html"))
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, data)
 }
 
-func login(w http.ResponseWriter, r *http.Request) {
+func Login(w http.ResponseWriter, r *http.Request) {
 	var tmpl = template.Must(template.ParseFiles("templates/log-in.html"))
 	tmpl.Execute(w, nil)
 }
 
-func sign_up(w http.ResponseWriter, r *http.Request) {
+func Sign_up(w http.ResponseWriter, r *http.Request) {
 	var tmpl = template.Must(template.ParseFiles("templates/sign_up.html"))
 	tmpl.Execute(w, nil)
 }
 
-func problem(w http.ResponseWriter, r *http.Request) {
+func Problem(w http.ResponseWriter, r *http.Request) {
+	session, _ := auth.Store.Get(r, "bitslab-session")
+	username := session.Values["username"]
+	data := map[string]interface{}{
+		"username": username,
+	}
 	var tmpl = template.Must(template.ParseFiles("templates/probleme.html"))
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, data)
 }
 
 func main() {
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
-	http.HandleFunc("/login", login)
-	http.HandleFunc("/sign_up", sign_up)
+	http.HandleFunc("/login", Login)
+	http.HandleFunc("/sign_up", Sign_up)
 	http.HandleFunc("/Login_user", auth.Login_user)
 	http.HandleFunc("/Sign_up_user", auth.Sign_up_user)
-	http.HandleFunc("/", index)
-	http.HandleFunc("/probleme", problem)
+	http.HandleFunc("/", Index)
+	http.HandleFunc("/probleme", auth.AuthRequired(Problem))
 	http.HandleFunc("/logouthandle", auth.LogoutHandler)
 	dbbuilder.Build_databases()
 	http.ListenAndServe(":8000", nil)

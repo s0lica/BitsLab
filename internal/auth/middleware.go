@@ -4,12 +4,12 @@ import (
 	"net/http"
 )
 
-func AuthRequired(next http.Handler) http.Handler {
+func AuthRequired(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		session, _ := store.Get(r, "bitslab-session")
+		session, _ := Store.Get(r, "bitslab-session")
 		auth, ok := session.Values["authenticated"].(bool)
 		if !ok || !auth {
-			http.Error(w, "Forbidden", http.StatusForbidden)
+			http.Redirect(w, r, "/login", 302)
 			return
 		}
 		next.ServeHTTP(w, r)
