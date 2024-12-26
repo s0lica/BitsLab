@@ -61,6 +61,18 @@ func Create_problem(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
+func ProblemHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := auth.Store.Get(r, "bitslab-session")
+	username := session.Values["username"]
+	problemid := r.PathValue("id")
+	data := map[string]interface{}{
+		"username":  username,
+		"problemid": problemid,
+	}
+	var tmpl = template.Must(template.ParseFiles("templates/problems/problem_template.html"))
+	tmpl.Execute(w, data)
+}
+
 func main() {
 	//STYLESHEETS
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
@@ -72,6 +84,8 @@ func main() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/probleme", Problem)
 	http.HandleFunc("/logouthandle", auth.LogoutHandler)
+	//DYNAMIC ROUTING
+	http.HandleFunc("/problems/{id}", ProblemHandler)
 	//ROUTING AUTHREQUIRED
 	http.HandleFunc("/user", auth.AuthRequired(Userpage))
 	//ROUTING ADMINREQUIRED
