@@ -35,14 +35,15 @@ func Build_databases() {
 	(ID bigint AUTO_INCREMENT PRIMARY KEY, 
 	created_at timestamp NOT NULL DEFAULT NOW(),
 	name text NOT NULL,
-	test_name text NOT NULL,
+	test_name text,
 	time_limit double NOT NULL,
 	memory_limit int NOT NULL,
-	source_size int NOT NULL, 
+	source_size int, 
 	console_input bool,
 	visible bool,
 	visible_tests bool,
-	task_description text)`
+	task_description text,
+	difficulty int NOT NULL)`
 	create, err = db.Exec(query)
 	if err != nil {
 		fmt.Println(err)
