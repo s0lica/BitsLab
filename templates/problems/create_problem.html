@@ -35,16 +35,30 @@
                 <h1>Creare problema</h1>
                 <div class="input-box" id="user">
                     <input name="problem_name" type="text" placeholder="Nume problema" required>
-                    <i class='bx bxs-user'></i>
                 </div>
                 <div class="input-box" id="memory_limit">
                     <input name="memory_limit" type="number" step="any" min = 4 max = 1024 placeholder="Limita de memorie (MB)" required>
-                    <i class='bx bxs-lock-alt'></i>
                 </div>
                 <div class="input-box" id="time_limit">
                     <input name="time_limit" type="number" step="any" min = 0.01 max = 5 placeholder="Limita de timp (s)" required>
-                    <i class='bx bxs-lock-alt'></i>
                 </div>
+                <div class="input-box" id="source_size">
+                    <input name="source_size" type="number" step="any" min = 0.01 max = 5 placeholder="Marimea maxima a sursei (MB)" required>
+                </div>
+                <div class="input-box" id="difficulty">
+                    <input name="difficulty" type="number" step="1" min = 1 max = 5 placeholder="Dificultatea problemei (1->5)" required>
+                </div>
+                <div class="visible">
+                    <label for="checkbox-visible"><input name="checkbox-visible" id="checkbox-visible" type="checkbox" value = "true">Vizibila
+                    </label>
+                </div>
+                <div class="visible-tests">
+                    <label for="checkbox-visible-tests"><input name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value = "true">Teste vizibile
+                    </label>
+                </div>
+                <textarea id = "task_description" name = "task_description">
+                </textarea>
+                <div>
                 <button type="submit" class="btn" value="submit">Creeaza</button>
                 </div>
             </form>

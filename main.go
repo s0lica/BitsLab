@@ -8,6 +8,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/s0lica/BitsLab/dbbuilder"
+	"github.com/s0lica/BitsLab/internal/api"
 	"github.com/s0lica/BitsLab/internal/auth"
 )
 
@@ -90,6 +91,8 @@ func main() {
 	http.HandleFunc("/user", auth.AuthRequired(Userpage))
 	//ROUTING ADMINREQUIRED
 	http.HandleFunc("/admin/create_problem", auth.AdminRequired(Create_problem))
+	//ACTION ROUTING
+	http.HandleFunc("/Create_problem", api.Create_problemHandler)
 	//TABLES BUILDER
 	dbbuilder.Build_databases()
 	//sv start
