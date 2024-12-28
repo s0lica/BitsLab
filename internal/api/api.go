@@ -2,13 +2,12 @@ package api
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
 	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/s0lica/BitsLab/internal/auth"
 	"github.com/s0lica/BitsLab/internal/db"
+	"github.com/s0lica/BitsLab/routes"
 )
 
 type problem struct {
@@ -71,11 +70,5 @@ func Create_problemHandler(w http.ResponseWriter, r *http.Request) {
 		(difficulty))
 	db.CloseDB()
 	panicerr(err)
-	session, _ := auth.Store.Get(r, "bitslab-session")
-	username := session.Values["username"]
-	data := map[string]interface{}{
-		"username": username,
-	}
-	var tmpl = template.Must(template.ParseFiles("templates/index.html"))
-	tmpl.Execute(w, data)
+	routes.Index(w, r)
 }
