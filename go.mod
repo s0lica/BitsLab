@@ -11,4 +11,6 @@ require (
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/gorilla/securecookie v1.1.2 // indirect
+	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/yuin/goldmark v1.7.8 // indirect
 )

@@ -1,10 +1,16 @@
 package routes
 
 import (
+	"bytes"
+	"fmt"
 	"html/template"
 	"net/http"
 
 	"github.com/s0lica/BitsLab/internal/auth"
+	"github.com/s0lica/BitsLab/internal/db"
+	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/renderer/html"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -61,9 +67,51 @@ func ProblemHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := auth.Store.Get(r, "bitslab-session")
 	username := session.Values["username"]
 	problemid := r.PathValue("id")
+	db.InitDB()
+	query := fmt.Sprintf(`SELECT name, 
+						 time_limit, 
+						 memory_limit, 
+						 console_input, 
+						 task_description, 
+						 difficulty 
+						 FROM Problems WHERE ID = '%s'`, (problemid))
+	var name string
+	var time_limit float64
+	var memory_limit int
+	var console_input bool
+	var task_description string
+	var difficulty int
+	err := db.DB.QueryRow(query).Scan(&name, &time_limit, &memory_limit, &console_input, &task_description, &difficulty)
+	if err != nil {
+		http.Error(w, "Problem does not exist", http.StatusForbidden)
+		return
+	}
+	md := goldmark.New(
+		goldmark.WithExtensions(
+			extension.GFM,
+			extension.Strikethrough,
+			extension.Table,
+		),
+		goldmark.WithRendererOptions(
+			html.WithHardWraps(),
+		),
+	)
+	var buf bytes.Buffer
+	err = md.Convert([]byte(task_description), &buf)
+	if err != nil {
+		http.Error(w, "Failed to render md", http.StatusForbidden)
+		return
+	}
+	db.CloseDB()
 	data := map[string]interface{}{
-		"username":  username,
-		"problemid": problemid,
+		"username":         username,
+		"problemid":        problemid,
+		"name":             name,
+		"time_limit":       time_limit,
+		"memory_limit":     memory_limit,
+		"console_input":    console_input,
+		"task_description": template.HTML(buf.String()),
+		"difficulty":       difficulty,
 	}
 	var tmpl = template.Must(template.ParseFiles("templates/problems/problem_template.html"))
 	tmpl.Execute(w, data)

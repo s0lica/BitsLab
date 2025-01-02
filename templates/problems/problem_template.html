@@ -10,6 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+          </script>
+          <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+          </script>
+      </div>
 </head>
 
 <body>
@@ -29,7 +36,22 @@
             </ul>
         </nav>
         <h1>{{.problemid}}</h1>
+        <h2>{{.name}}</h2>
+        <h3>{{.time_limit}}</h3>
+        <h3>{{.memory_limit}}</h3>
+        <h3>{{.console_input}}</h3>
+        <h3>{{.difficulty}}</h3>
+        <pre>{{.task_description}}</pre>
+        <h4>$4 = 3*3$</h4>
     </div>
+    <script>
+        function update_mathjax(){
+            MathJax.Hub.Queue(['Typeset',MathJax.Hub,'output']);
+        }
+        window.onload = function() {
+            update_mathjax()
+        };        
+        </script>
 </body>
 
 </html>
