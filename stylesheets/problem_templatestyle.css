@@ -57,3 +57,21 @@ hr{
     width: 100%;
     color:silver;
 }
+
+#problemid{
+    display:flex;
+    justify-content: center;
+    margin-left:25%;
+    margin-right: 25%;
+    margin-top:1%;
+    padding-top:2%;
+    width: 50%;
+    height:6%;
+    background-color: aliceblue;
+}
+
+#probleminfo{
+    display:flex;
+    justify-content: center;
+    
+}

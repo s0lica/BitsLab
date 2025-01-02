@@ -35,13 +35,17 @@
                 {{end}}
             </ul>
         </nav>
-        <h1>{{.problemid}}</h1>
-        <h2>{{.name}}</h2>
-        <h3>{{.time_limit}}</h3>
-        <h3>{{.memory_limit}}</h3>
-        <h3>{{.console_input}}</h3>
-        <h3>{{.difficulty}}</h3>
-        <pre>{{.task_description}}</pre>
+        <div id = "problemid">
+            <p>{{.problemid}}&nbsp;-&nbsp;</p>
+            <p>{{.name}}</p>
+        </div>
+        <div id = "probleminfo">
+            <p>{{.time_limit}}</p>
+            <p>{{.memory_limit}}</p>
+            <p>{{.console_input}}</p>
+            <p>{{.difficulty}}</p>
+        </div>
+        <h3>{{.task_description}}</h3>
         <h4>$4 = 3*3$</h4>
     </div>
     <script>
