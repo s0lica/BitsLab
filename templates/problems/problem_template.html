@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
           </script>
@@ -39,11 +42,13 @@
             <p>{{.problemid}}&nbsp;-&nbsp;</p>
             <p>{{.name}}</p>
         </div>
-        <div id = "probleminfo">
-            <p>Limita de timp(S)&nbsp;:&nbsp;{{.time_limit}}<br><br>Limita de memorie(MB)&nbsp;:&nbsp;{{.memory_limit}}<br><br>Dificultate&nbsp;:&nbsp;{{.difficulty}}</p>
-        </div>
-        <div id = "statement">
-            {{.task_description}}
+        <div id = "statpbrinfo">
+            <div id = "statement">
+                {{.task_description}}
+            </div>
+            <div id = "probleminfo">
+                <p>Limita de timp(S)&nbsp;:&nbsp;{{.time_limit}}<br><br>Limita de memorie(MB)&nbsp;:&nbsp;{{.memory_limit}}<br><br>Dificultate&nbsp;:&nbsp;{{.difficulty}}</p>
+            </div>
         </div>
     </div>
     <script>
