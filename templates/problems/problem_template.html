@@ -40,13 +40,11 @@
             <p>{{.name}}</p>
         </div>
         <div id = "probleminfo">
-            <p>{{.time_limit}}</p>
-            <p>{{.memory_limit}}</p>
-            <p>{{.console_input}}</p>
-            <p>{{.difficulty}}</p>
+            <p>Limita de timp(S)&nbsp;:&nbsp;{{.time_limit}}<br><br>Limita de memorie(MB)&nbsp;:&nbsp;{{.memory_limit}}<br><br>Dificultate&nbsp;:&nbsp;{{.difficulty}}</p>
         </div>
-        <h3>{{.task_description}}</h3>
-        <h4>$4 = 3*3$</h4>
+        <div id = "statement">
+            {{.task_description}}
+        </div>
     </div>
     <script>
         function update_mathjax(){

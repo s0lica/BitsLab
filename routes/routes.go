@@ -94,10 +94,12 @@ func ProblemHandler(w http.ResponseWriter, r *http.Request) {
 		),
 		goldmark.WithRendererOptions(
 			html.WithHardWraps(),
+			html.WithXHTML(),
 		),
 	)
 	var buf bytes.Buffer
 	err = md.Convert([]byte(task_description), &buf)
+	fmt.Println(buf.String())
 	if err != nil {
 		http.Error(w, "Failed to render md", http.StatusForbidden)
 		return
