@@ -49,19 +49,22 @@
                     <input class = "in no-arrows" name="difficulty" type="number" step="1" min = 1 max = 5 placeholder="Dificultatea problemei (1->5)" required>
                 </div>
                 <div class="visible">
-                    <label for="checkbox-visible"><input class = "checkbox" name="checkbox-visible" id="checkbox-visible" type="checkbox" value = "true">Vizibila
+                    <label class="checkboxlabel" for="checkbox-visible"><input class = "checkbox" name="checkbox-visible" id="checkbox-visible" type="checkbox" value = "true">Vizibila
                     </label>
                 </div>
                 <div class="visible-tests">
-                    <label for="checkbox-visible-tests"><input class = "checkbox" name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value = "true">Teste vizibile
+                    <label class="checkboxlabel" for="checkbox-visible-tests"><input class = "checkbox" name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value = "true">Teste vizibile
                     </label>
                 </div>
                 <div class="console-input">
-                    <label for="checkbox-console"><input class = "checkbox" name="checkbox-console" id="checkbox-console" type="checkbox" value = "true">Console Input
+                    <label class="checkboxlabel" for="checkbox-console"><input class = "checkbox" name="checkbox-console" id="checkbox-console" type="checkbox" value = "true">Console Input
                     </label>
                 </div>
-                <textarea id = "task_description" name = "task_description">
-                </textarea>
+                <div class = "textarea-container">
+                    <div class="line-numbers" id="lineNumbers"></div>
+                    <textarea id = "task_description" name = "task_description">
+                    </textarea>
+                </div>
                 <div>
                 <button type="submit" class="btn" value="submit">Creeaza</button>
                 </div>
