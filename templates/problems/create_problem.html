@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BitsLab</title>
     <link rel="stylesheet" href="/stylesheets/create_problemstyle.css">
+    <link rel="stylesheet" href="/stylesheets/codemirror.css">
     <meta name="description"
         content="Platforma pentru rezolvare de probleme de informatica si participare la concursuri.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/midnight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/stex/stex.min.js"></script>
 </head>
 
 <body>
@@ -33,45 +37,50 @@
                 {{end}}
             </ul>
         </nav>
-        <div id = "create_problem">
+        <div id="create_problem">
             <form name="create_problem" action="/Create_problem" method="POST">
                 <h1>Creare problema</h1>
                 <div class="input-box" id="problem_name">
-                    <input class = "in" name="problem_name" type="text" placeholder="Nume problema" required>
+                    <input class="in" name="problem_name" type="text" placeholder="Nume problema" required>
                 </div>
                 <div class="input-box" id="memory_limit">
-                    <input class = "in no-arrows" name="memory_limit" type="number" step="any" min = 4 max = 1024 placeholder="Limita de memorie (MB)" required>
+                    <input class="in no-arrows" name="memory_limit" type="number" step="any" min=4 max=1024
+                        placeholder="Limita de memorie (MB)" required>
                 </div>
                 <div class="input-box" id="time_limit">
-                    <input class = "in no-arrows" name="time_limit" type="number" step="any" min = 0.01 max = 5 placeholder="Limita de timp (s)" required>
+                    <input class="in no-arrows" name="time_limit" type="number" step="any" min=0.01 max=5
+                        placeholder="Limita de timp (s)" required>
                 </div>
                 <div class="input-box" id="source_size">
-                    <input class = "in no-arrows" name="source_size" type="number" step="any" min = 0.01 max = 5 placeholder="Marimea maxima a sursei (MB)" required>
+                    <input class="in no-arrows" name="source_size" type="number" step="any" min=0.01 max=5
+                        placeholder="Marimea maxima a sursei (MB)" required>
                 </div>
                 <div class="input-box" id="difficulty">
-                    <input class = "in no-arrows" name="difficulty" type="number" step="1" min = 1 max = 5 placeholder="Dificultatea problemei (1->5)" required>
+                    <input class="in no-arrows" name="difficulty" type="number" step="1" min=1 max=5
+                        placeholder="Dificultatea problemei (1->5)" required>
                 </div>
                 <div class="visible">
-                    <label class="checkboxlabel" for="checkbox-visible"><input class = "checkbox" name="checkbox-visible" id="checkbox-visible" type="checkbox" value = "true">Vizibila
+                    <label class="checkboxlabel" for="checkbox-visible"><input class="checkbox" name="checkbox-visible"
+                            id="checkbox-visible" type="checkbox" value="true">Vizibila
                     </label>
                 </div>
                 <div class="visible-tests">
-                    <label class="checkboxlabel" for="checkbox-visible-tests"><input class = "checkbox" name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value = "true">Teste vizibile
+                    <label class="checkboxlabel" for="checkbox-visible-tests"><input class="checkbox"
+                            name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value="true">Teste
+                        vizibile
                     </label>
                 </div>
                 <div class="console-input">
-                    <label class="checkboxlabel" for="checkbox-console"><input class = "checkbox" name="checkbox-console" id="checkbox-console" type="checkbox" value = "true">Console Input
+                    <label class="checkboxlabel" for="checkbox-console"><input class="checkbox" name="checkbox-console"
+                            id="checkbox-console" type="checkbox" value="true">Console Input
                     </label>
                 </div>
-                    <textarea id = "task_description" name = "task_description">
-                    </textarea>
-                <div>
+                <textarea id="task_description" name="task_description"></textarea>
                 <button type="submit" class="btn" value="submit">Creeaza</button>
-                </div>
             </form>
         </div>
     </div>
-    <script src = "/assets/editorscript.js"></script>
+    <script src="/assets/editorscript.js"></script>
 </body>
 
 </html>

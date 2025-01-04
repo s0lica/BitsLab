@@ -9,8 +9,8 @@ body{
     font-weight: 400;
     font-style: normal;
 }
-.bigdiv{
-    height:100vh;
+.bigdiv{    
+    overflow: visible;
     width: 100%;
     background-color: #1f1f1f;
 }
@@ -77,6 +77,7 @@ hr{
     margin-right: 25%;
     margin-top:1%;
     padding-top:0.5em;
+    padding-bottom:0.5em;
     width: 50%;
     height:6%;
     color:#b9b9b9;
@@ -96,7 +97,7 @@ hr{
     align-content: center;
     background-color: inherit;
     margin-left:7%;
-    height:30%;
+    height:250px;
     margin-top:3%;
     width:14%;
     padding-bottom: 0;
@@ -116,15 +117,16 @@ hr{
     z-index: 1;
     display: flex;
     flex-direction: column;
+    min-height: 30%;
     align-items: flex-start;
     width:70%; 
     background-color: inherit;
     color:#b9b9b9;
     margin-left:2%;
     margin-right:0;
-    padding-top:1%;
+    padding-top:2%;
     padding-left:2%;
-    padding-bottom:0;
+    padding-bottom:2%;
     padding-right: 2%;
     font-family: "Open Sans", serif;
     font-optical-sizing: auto;

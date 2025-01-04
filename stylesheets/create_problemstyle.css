@@ -10,6 +10,10 @@ body {
     font-style: normal;
 }
 
+#create_problem form{
+    width: 100%;
+}
+
 .bigdiv {
     height: 100vh;
     width: 100%;
@@ -72,11 +76,12 @@ hr {
     display:flex;
     background-color: inherit;
     width: 70%;
-    margin-top:5%;
+    margin-top:3%;
     margin-left:5%;
     margin-right: 15%;
     padding-left:2%;
     padding-top:0.5%;
+    padding-bottom: 1%;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
@@ -85,7 +90,7 @@ hr {
 }
 
 #create_problem .in{
-    width: 100%;
+    width: 25%;
     background-color: transparent;
     border: none;
     outline: none;
