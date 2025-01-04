@@ -4,7 +4,6 @@ html{
 body {
     padding: 0;
     margin: 0;
-    box-sizing: 0;
     font-family: "Aldrich", serif;
     font-weight: 400;
     font-style: normal;
@@ -21,6 +20,7 @@ nav {
     background-color: #1f1f1f;
     z-index:10;
     top: 0;
+    height: 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,6 +34,7 @@ nav {
 .logo {
     color: #007a7a;
     font-size: 40px;
+    font-weight: 400;
 }
 
 .logo:hover {

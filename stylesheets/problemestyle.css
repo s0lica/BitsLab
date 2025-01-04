@@ -18,6 +18,7 @@ nav{
     position: sticky;
     background-color: #1f1f1f;
     z-index:10;
+    height: 5%;
     top:0;
     display:flex;
     align-items: center;
@@ -29,7 +30,7 @@ nav{
     border-bottom: solid 3px #6a6b70;
 }
 .logo{
-    font-weight: 900;
+    font-weight: 400;
     color:#007a7a;
     font-size:40px;
 }

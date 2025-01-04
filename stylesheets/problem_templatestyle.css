@@ -18,6 +18,7 @@ nav{
     position: sticky;
     z-index:10;
     background-color: #1f1f1f;
+    height: 5%;
     top:0;
     display:flex;
     align-items: center;
@@ -65,14 +66,26 @@ hr{
 
 #problemid{
     display:flex;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
     justify-content: center;
+    background-color: inherit;
     margin-left:25%;
     margin-right: 25%;
     margin-top:1%;
-    padding-top:2%;
+    padding-top:0.5em;
     width: 50%;
     height:6%;
-    background-color: aliceblue;
+    color:#b9b9b9;
+    font-size:25px;
+    border-radius:10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 10px;
 }
 
 #probleminfo{
