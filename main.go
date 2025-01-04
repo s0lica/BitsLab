@@ -13,8 +13,9 @@ import (
 )
 
 func main() {
-	//STYLESHEETS
+	//STYLESHEETS + SCRIPTS
 	http.Handle("/stylesheets/", http.StripPrefix("/stylesheets/", http.FileServer(http.Dir("./stylesheets"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	//ROUTING NO LOGIN
 	http.HandleFunc("/login", routes.Login)
 	http.HandleFunc("/sign_up", routes.Sign_up)

@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
 </head>
 
 <body>
@@ -60,17 +63,15 @@
                     <label class="checkboxlabel" for="checkbox-console"><input class = "checkbox" name="checkbox-console" id="checkbox-console" type="checkbox" value = "true">Console Input
                     </label>
                 </div>
-                <div class = "textarea-container">
-                    <div class="line-numbers" id="lineNumbers"></div>
                     <textarea id = "task_description" name = "task_description">
                     </textarea>
-                </div>
                 <div>
                 <button type="submit" class="btn" value="submit">Creeaza</button>
                 </div>
             </form>
         </div>
     </div>
+    <script src = "/assets/editorscript.js"></script>
 </body>
 
 </html>
