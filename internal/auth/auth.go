@@ -12,7 +12,16 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var Store = sessions.NewCookieStore([]byte("super-secret-key"))
+var Store = sessions.NewCookieStore([]byte("your-secret-key"))
+
+func init() {
+	Store.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   3600 * 8,
+		HttpOnly: true,
+		Secure:   false,
+	}
+}
 
 func hashPassword(plain string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(plain), bcrypt.DefaultCost)

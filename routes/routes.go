@@ -39,6 +39,7 @@ func Problem(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"username": username,
 	}
+	fmt.Println(session.Values["autenticated"])
 	var tmpl = template.Must(template.ParseFiles("templates/probleme.html"))
 	tmpl.Execute(w, data)
 }
