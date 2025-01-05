@@ -49,6 +49,7 @@ func Build_databases() {
 	}
 	query = `CREATE TABLE IF NOT EXISTS Submissions 
 	(ID bigint AUTO_INCREMENT PRIMARY KEY,
+	code text NOT NULL,
 	created_at timestamp NOT NULL DEFAULT NOW(),
 	user_id int REFERENCES Users(uid),
 	problem_id bigint REFERENCES Problems(ID),

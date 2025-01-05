@@ -59,10 +59,6 @@ nav h2 a{
     text-decoration: none;
 }
 
-hr{
-    width: 100%;
-    color:silver;
-}
 
 #problemid{
     display:flex;
@@ -164,4 +160,25 @@ hr{
     padding: 2px 2px 2px 2px;
     border:1px solid #b9b9b9;
     border-collapse: collapse;
+}
+
+#submitbox{
+    display:flex;
+    background-color: inherit;
+    width: 70%;
+    margin-top:3%;
+    margin-left:2%;
+    margin-right: 15%;
+    padding-left:1.5%;
+    padding-top:0.5%;
+    padding-bottom: 1%;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+}
+
+#submitbox form{
+    width: 100%;
 }

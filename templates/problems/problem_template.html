@@ -13,18 +13,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-          </script>
-          <script type="text/javascript"
-            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-          </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/midnight.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/stex/stex.min.js"></script>
-    <link rel="stylesheet" href="/stylesheets/codemirror.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/templatecodemirror.css">
 </head>
 
 <body>
@@ -62,6 +59,7 @@
             <button type="submit" class="btn" value="submit">Submit</button>
         </form>
     </div>
+    <script src="/assets/codeeditor.js"></script>
     <script>
         function update_mathjax(){
             MathJax.Hub.Queue(['Typeset',MathJax.Hub,'output']);
@@ -70,7 +68,6 @@
             update_mathjax()
         };        
         </script>
-    <script src="/assets/editorscript.js"></script>
 </body>
 
 </html>
