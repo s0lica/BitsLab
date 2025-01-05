@@ -20,14 +20,13 @@ func Build_databases() {
 	Username VARCHAR(500), 
 	Password VARCHAR(500),
 	IsAdmin bool DEFAULT false)`
-	create, err := db.Exec(query)
+	_, err = db.Exec(query)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(create)
 	fmt.Println(1)
 	query = "CREATE TABLE IF NOT EXISTS UserSessions(session_id VARCHAR(255) PRIMARY KEY, uid int NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, expires_at TIMESTAMP)"
-	create, err = db.Exec(query)
+	_, err = db.Exec(query)
 	if err != nil {
 		panic(err)
 	}
@@ -44,8 +43,44 @@ func Build_databases() {
 	visible_tests bool,
 	task_description text,
 	difficulty int NOT NULL)`
-	create, err = db.Exec(query)
+	_, err = db.Exec(query)
 	if err != nil {
 		fmt.Println(err)
 	}
+	query = `CREATE TABLE IF NOT EXISTS Submissions 
+	(ID bigint AUTO_INCREMENT PRIMARY KEY,
+	created_at timestamp NOT NULL DEFAULT NOW(),
+	user_id int REFERENCES Users(uid),
+	problem_id bigint REFERENCES Problems(ID),
+	compile_error bool,
+	compile_message text,
+	compile_duration double,
+	score int NOT NULL DEFAULT 0,
+	max_time double,
+	max_memory int)
+	`
+	_, err = db.Exec(query)
+	if err != nil {
+		fmt.Println(err)
+	}
+	query = `CREATE TABLE IF NOT EXISTS TestCases
+	(ID bigint AUTO_INCREMENT PRIMARY KEY,
+	create_at timestamp NOT NULL DEFAULT NOW(),
+	problem_id bigint REFERENCES Problems(ID),
+	input text NOT NULL,
+	expected_output text NOT NULL,
+	visible bool)`
+	_, err = db.Exec(query)
+	query = `CREATE TABLE IF NOT EXISTS SubmissionTestResults
+	(ID bigint AUTO_INCREMENT PRIMARY KEY,
+	submission_id bigint REFERENCES Submissions(ID),
+	test_id bigint REFERENCES TestCases(ID),
+	score int NOT NULL DEFAULT 0,
+	time double,
+	memory int,
+	output text,
+	compile_error bool,
+	compile_message text,
+	compile_duration double)`
+	_, err = db.Exec(query)
 }

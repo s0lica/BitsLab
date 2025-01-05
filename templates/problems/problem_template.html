@@ -19,7 +19,12 @@
           <script type="text/javascript"
             src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
           </script>
-      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/midnight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/stex/stex.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/codemirror.css">
 </head>
 
 <body>
@@ -51,6 +56,12 @@
             </div>
         </div>
     </div>
+    <div id = "submitbox">
+        <form name="submit" action="/create_submission" method="POST">
+            <textarea id="submissioncode" name="submissioncode"></textarea>
+            <button type="submit" class="btn" value="submit">Submit</button>
+        </form>
+    </div>
     <script>
         function update_mathjax(){
             MathJax.Hub.Queue(['Typeset',MathJax.Hub,'output']);
@@ -59,6 +70,7 @@
             update_mathjax()
         };        
         </script>
+    <script src="/assets/editorscript.js"></script>
 </body>
 
 </html>

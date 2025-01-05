@@ -11,4 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       value: ""
   });
+  var editor2 = CodeMirror.fromTextArea(document.getElementById("submissioncode"), {
+      lineNumbers: true,
+      mode:"markdown",
+      value: ""
+  });
 });
