@@ -1,20 +1,19 @@
 .CodeMirror {
-    margin-top: 2%;
-    width: 80%;
-    margin-bottom:2%;
-    padding-top:0;
-    color: #fff !important;
-    background:#6a6b70!important;
-    border-radius: 10px!important;
-    font-size: 20px!important;
-  }
-  .CodeMirror-gutters {
-     background: #6a6b70!important;
-  
-  }
-  .CodeMirror-linenumber{
-    color: #fff !important;
-  }
-  .CodeMirror-math{
-    color:aqua;
-  }
+  margin-top: 2%;
+  width: 80%;
+  margin-bottom:2%;
+  color: #fff !important;
+  background:#6a6b70!important;
+  border-radius: 10px!important;
+  font-size: 20px!important;
+}
+.CodeMirror-gutters {
+   background: #6a6b70!important;
+
+}
+.CodeMirror-linenumber{
+  color: #fff !important;
+}
+.CodeMirror-math{
+  color:aqua;
+}

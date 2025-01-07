@@ -13,14 +13,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            skipTags: ["textarea", "code", "pre"]  <!-- Skip CodeMirror -->
+        }
+    });
       </script>
       <script type="text/javascript"
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
       </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/midnight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/stex/stex.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/templatecodemirror.css">
 </head>
 
@@ -52,12 +61,12 @@
                 <p>Limita de timp(S)&nbsp;:&nbsp;{{.time_limit}}<br><br>Limita de memorie(MB)&nbsp;:&nbsp;{{.memory_limit}}<br><br>Dificultate&nbsp;:&nbsp;{{.difficulty}}</p>
             </div>
         </div>
-    </div>
-    <div id = "submitbox">
-        <form name="submit" action="/create_submission" method="POST">
-            <textarea id="submissioncode" name="submissioncode"></textarea>
-            <button type="submit" class="btn" value="submit">Submit</button>
-        </form>
+        <div id = "submitbox">
+            <form name="submit" action="/create_submission" method="POST">
+                <textarea id="submissioncode" name="submissioncode"></textarea>
+                <button type="submit" class="btn" value="submit">Submit</button>
+            </form>
+        </div>
     </div>
     <script src="/assets/codeeditor.js"></script>
     <script>
