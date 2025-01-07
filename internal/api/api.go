@@ -72,3 +72,9 @@ func Create_problemHandler(w http.ResponseWriter, r *http.Request) {
 	panicerr(err)
 	routes.Index(w, r)
 }
+
+func Create_submissionHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	user_code := r.Form["submissioncode"]
+
+}
