@@ -75,6 +75,26 @@ func Create_problemHandler(w http.ResponseWriter, r *http.Request) {
 
 func Create_submissionHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	user_code := r.Form["submissioncode"]
+}
 
+// / test creation from input / output format straight from form
+func Create_testsimpleHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	problem_id := r.Form["problem_id"]
+	input := r.Form["testcase_input"]
+	expected_output := r.Form["testcase_output"]
+	visible := r.FormValue("checkbox-visible") == "true"
+	db.InitDB()
+	_, err := db.DB.Query(`INSERT INTO TestCases
+	(problem_id,
+	input,
+	expected_output,
+	visible) VALUES (?,?,?,?)`,
+		(problem_id),
+		(input),
+		(expected_output),
+		(visible))
+	if err != nil {
+		fmt.Println(err)
+	}
 }
