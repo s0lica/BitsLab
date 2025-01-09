@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitsLab</title>
+    <link rel="stylesheet" href="/stylesheets/create_problemstyle.css">
+    <link rel="stylesheet" href="/stylesheets/codemirror.css">
+    <meta name="description"
+        content="Platforma pentru rezolvare de probleme de informatica si participare la concursuri.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/midnight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/stex/stex.min.js"></script>
+</head>
+
+<body>
+    <div class="bigdiv">
+        <nav>
+            <h2 class="logo"><a href="/">BitsLab<a></h2>
+            <ul>
+                <li><a href="/probleme">Probleme</a></li>
+                <li><a href="#">Concursuri</a></li>
+                {{if .username}}
+                <li><a href="/logouthandle">Log Out</a></li>
+                <li><a href="/user">{{.username}}</a></li>
+                {{else}}
+                <li><a href="/sign_up">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+                {{end}}
+            </ul>
+        </nav>
+        <div id="create_problem">
+            <form name="create_problem" action="/Create_problem" method="POST">
+                <h1>Creare problema</h1>
+                <div class="input-box" id="problem_name">
+                    <input class="in" name="problem_name" type="text" placeholder="Nume problema" value={{.name}} required>
+                </div>
+                <div class="input-box" id="memory_limit">
+                    <input class="in no-arrows" name="memory_limit" type="number" step="any" min=4 max=1024
+                        placeholder="Limita de memorie (MB)" value = {{.memory_limit}} required>
+                </div>
+                <div class="input-box" id="time_limit">
+                    <input class="in no-arrows" name="time_limit" type="number" step="any" min=0.01 max=5
+                        placeholder="Limita de timp (s)" value = {{.time_limit}} required>
+                </div>
+                <div class="input-box" id="source_size">
+                    <input class="in no-arrows" name="source_size" type="number" step="any" min=0.01 max=5
+                        placeholder="Marimea maxima a sursei (MB)" value = {{.source_size}} required>
+                </div>
+                <div class="input-box" id="difficulty">
+                    <input class="in no-arrows" name="difficulty" type="number" step="1" min=1 max=5
+                        placeholder="Dificultatea problemei (1->5)" value = {{.difficulty}} required>
+                </div>
+                <div class="visible">
+                    <label class="checkboxlabel" for="checkbox-visible"><input class="checkbox" name="checkbox-visible"
+                            id="checkbox-visible" type="checkbox" value="true" {{if .visible}} checked {{end}}>Vizibila
+                    </label>
+                </div>
+                <div class="visible-tests">
+                    <label class="checkboxlabel" for="checkbox-visible-tests"><input class="checkbox"
+                            name="checkbox-visible-tests" id="checkbox-visible-tests" type="checkbox" value="true" {{if .visible_tests}} checked {{end}}>Teste
+                        vizibile
+                    </label>
+                </div>
+                <div class="console-input">
+                    <label class="checkboxlabel" for="checkbox-console"><input class="checkbox" name="checkbox-console"
+                            id="checkbox-console" type="checkbox" value="true" {{if .console_input}} checked {{end}}>Console Input
+                    </label>
+                </div>
+                <textarea id="task_description" name="task_description">{{.task_description}}</textarea>
+                <button type="submit" class="btn" value="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="/assets/editorscript.js"></script>
+</body>
+
+</html>

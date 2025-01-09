@@ -30,6 +30,7 @@ func main() {
 	http.HandleFunc("/user", auth.AuthRequired(routes.Userpage))
 	//ROUTING ADMINREQUIRED
 	http.HandleFunc("/admin/create_problem", auth.AdminRequired(routes.Create_problem))
+	http.HandleFunc("/admin/edit_problem/{id}", auth.AdminRequired(routes.Edit_problem))
 	//ACTION ROUTING
 	http.HandleFunc("/Create_problem", api.Create_problemHandler)
 	//TABLES BUILDER
