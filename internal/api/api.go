@@ -88,7 +88,7 @@ func Create_testsimpleHandler(w http.ResponseWriter, r *http.Request) {
 	input := r.Form["testcase_input"]
 	expected_output := r.Form["testcase_output"]
 	var pid int
-	strconv.ParseInt(problem_id, 10, pid)
+	pid, _ = strconv.Atoi(problem_id)
 	db.InitDB()
 	_, err := db.DB.Query(`INSERT INTO TestCases
 	(problem_id,
@@ -101,4 +101,6 @@ func Create_testsimpleHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 	db.CloseDB()
+	rdr := fmt.Sprintf("/admin/edit_problem/%s/create_test", (problem_id))
+	http.Redirect(w, r, rdr, http.StatusSeeOther)
 }
