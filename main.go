@@ -34,6 +34,7 @@ func main() {
 	http.HandleFunc("/admin/edit_problem/{id}/create_test", auth.AdminRequired(routes.Create_test))
 	//ACTION ROUTINGt
 	http.HandleFunc("/Create_problem", api.Create_problemHandler)
+	http.HandleFunc("/create_test/{problem_id}", api.Create_testsimpleHandler)
 	//TABLES BUILDER
 	dbbuilder.Build_databases()
 	//sv start

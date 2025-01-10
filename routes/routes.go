@@ -76,6 +76,7 @@ func Create_test(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"username":     username,
 		"problem_name": name,
+		"problem_id":   problemid,
 	}
 	var tmpl = template.Must(template.ParseFiles("templates/problems/tests_edits/create_test.html"))
 	tmpl.Execute(w, data)
