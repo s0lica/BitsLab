@@ -7,7 +7,6 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/s0lica/BitsLab/internal/db"
-	"github.com/s0lica/BitsLab/routes"
 )
 
 type problem struct {
@@ -68,9 +67,14 @@ func Create_problemHandler(w http.ResponseWriter, r *http.Request) {
 		(visible_tests),
 		(task_description[0]),
 		(difficulty))
+	row := db.DB.QueryRow("SELECT MAX(ID) FROM Problems")
+	var last_id int
+	row.Scan(&last_id)
 	db.CloseDB()
 	panicerr(err)
-	routes.Index(w, r)
+	fmt.Println(last_id)
+	str := strconv.Itoa(last_id)
+	http.Redirect(w, r, fmt.Sprintf("/admin/edit_problem/%s/create_test", (str)), http.StatusAccepted)
 }
 
 func Create_submissionHandler(w http.ResponseWriter, r *http.Request) {

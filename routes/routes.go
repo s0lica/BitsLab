@@ -64,6 +64,23 @@ func Create_problem(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
+func Create_test(w http.ResponseWriter, r *http.Request) {
+	session, _ := auth.Store.Get(r, "bitslab-session")
+	username := session.Values["username"]
+	db.InitDB()
+	problemid := r.PathValue("id")
+	query := fmt.Sprintf(`SELECT name FROM Problems WHERE ID = '%s'`, (problemid))
+	var name string
+	db.DB.QueryRow(query).Scan(&name)
+	db.CloseDB()
+	data := map[string]interface{}{
+		"username":     username,
+		"problem_name": name,
+	}
+	var tmpl = template.Must(template.ParseFiles("templates/problems/tests_edits/create_test.html"))
+	tmpl.Execute(w, data)
+}
+
 func ProblemHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := auth.Store.Get(r, "bitslab-session")
 	username := session.Values["username"]
