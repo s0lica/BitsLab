@@ -1,3 +1,7 @@
+.hidden{
+    display:none;
+}
+
 html{
     background-color: #1f1f1f;;
 }
@@ -66,11 +70,12 @@ nav h2 a {
 #boxholder{
     display:flex;
     width: 70%;
-    height:80%;
+    height:auto;
     margin-top:3%;
     margin-left:5%;
     padding-top:1%;
     padding-left:2%;
+    padding-bottom: 1%;
     background-color: inherit;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
@@ -124,4 +129,41 @@ nav h2 a {
     font-size: 16px;
     color: #333;
     font-weight: 600;
+}
+#inputchoice{
+    width: 13%;
+    height:30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:10px;
+    padding-right: 10px;
+    background-color: inherit;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color:#fff;
+}
+
+select::-webkit-dropdown-list {
+    border-radius: 40px;
+}
+
+#outputchoice{
+    width: 13%;
+    height:30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:10px;
+    padding-right: 10px;
+    background-color: inherit;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color:#fff;
 }
