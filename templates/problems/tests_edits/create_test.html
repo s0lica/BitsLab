@@ -40,14 +40,14 @@
                     <option value="upload">Incarca fisier</option>
                 </select>
                 <textarea rows = "12" columns = "50" name = "testcase_input" id="inputtext"></textarea>
-                <input type="file" name="infile" id="inputupload" accept=".in" class="hidden">
+                <input type="file" name="infile" id="inputupload" accept=".in" class="hidden" required>
                 <h2>Output :</h2>
                 <select name="outputchoice" id="outputchoice" onchange="handleselectchange()">
                     <option value="type">Scrie text</option>
                     <option value="upload">Incarca fisier</option>
                 </select>
                 <textarea rows = "12" columns = "50" name = "testcase_output" id="outputtext"></textarea>
-                <input type="file" name="infile" id="outputupload" accept=".out" class="hidden">
+                <input type="file" name="infile" id="outputupload" accept=".out" class="hidden" required>
                 <div id = "buttonholder">
                     <button type = "submit" value = "submit">Adauga test</button>
                     <a href="/admin/edit_problem/{{.problem_id}}/edit_tests">Editeaza teste</a>

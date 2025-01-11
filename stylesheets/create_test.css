@@ -1,5 +1,5 @@
 .hidden{
-    display:none;
+    display: none !important;;
 }
 
 html{
@@ -166,4 +166,22 @@ select::-webkit-dropdown-list {
     cursor: pointer;
     font-size: 16px;
     color:#fff;
+}
+
+#inputupload{
+    width:13%;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color:#fff;
+}
+input#file-upload-button{
+    background-color: inherit;
+    border-radius: 10px;
 }
