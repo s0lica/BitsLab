@@ -68,8 +68,8 @@ func Build_databases() {
 	(ID bigint AUTO_INCREMENT PRIMARY KEY,
 	create_at timestamp NOT NULL DEFAULT NOW(),
 	problem_id bigint REFERENCES Problems(ID),
-	input text NOT NULL,
-	expected_output text NOT NULL,
+	input longtext NOT NULL,
+	expected_output longtext NOT NULL,
 	visible bool)`
 	_, err = db.Exec(query)
 	query = `CREATE TABLE IF NOT EXISTS SubmissionTestResults

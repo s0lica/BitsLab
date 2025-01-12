@@ -31,7 +31,7 @@
                 {{end}}
             </ul>
         </nav>
-        <form id = "boxholder" action="/create_test/{{.problem_id}}" method="POST">
+        <form id = "boxholder" action="/create_test/{{.problem_id}}" enctype="multipart/form-data" method="POST">
             <h1>Creare test</h1>
             <h1>Problema : {{.problem_name}}</h1>
                 <h2>Input :</h2>
@@ -39,15 +39,15 @@
                     <option value="type">Scrie text</option>
                     <option value="upload">Incarca fisier</option>
                 </select>
-                <textarea rows = "12" columns = "50" name = "testcase_input" id="inputtext"></textarea>
-                <input type="file" name="infile" id="inputupload" accept=".in" class="hidden" required>
+                <textarea rows = "12" columns = "50" name = "testcase_input" id="inputtext" required></textarea>
+                <input type="file" name="infile" id="inputupload" accept=".in" class="hidden">
                 <h2>Output :</h2>
                 <select name="outputchoice" id="outputchoice" onchange="handleselectchange()">
                     <option value="type">Scrie text</option>
                     <option value="upload">Incarca fisier</option>
                 </select>
-                <textarea rows = "12" columns = "50" name = "testcase_output" id="outputtext"></textarea>
-                <input type="file" name="infile" id="outputupload" accept=".out" class="hidden" required>
+                <textarea rows = "12" columns = "50" name = "testcase_output" id="outputtext" required></textarea>
+                <input type="file" name="outfile" id="outputupload" accept=".out" class="hidden">
                 <div id = "buttonholder">
                     <button type = "submit" value = "submit">Adauga test</button>
                     <a href="/admin/edit_problem/{{.problem_id}}/edit_tests">Editeaza teste</a>

@@ -1,7 +1,10 @@
 package api
 
 import (
+	"bytes"
 	"fmt"
+	"io"
+	"mime/multipart"
 	"net/http"
 	"strconv"
 
@@ -83,14 +86,40 @@ func Create_submissionHandler(w http.ResponseWriter, r *http.Request) {
 
 // / test creation from input / output format straight from form
 func Create_testsimpleHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
+	r.Body = http.MaxBytesReader(w, r.Body, (10 << 20))
+	body := &bytes.Buffer{}
+	writer := multipart.NewWriter(body)
+	r.Header.Add("Content-Type", writer.FormDataContentType())
+	err := r.ParseMultipartForm(10 << 20)
 	problem_id := r.PathValue("problem_id")
+	fileinput, inputhandler, err := r.FormFile("infile")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileoutput, outputhandler, err := r.FormFile("outfile")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(inputhandler)
+	fmt.Println(outputhandler)
+	defer fileinput.Close()
+	defer fileoutput.Close()
+	inputcontent, err := io.ReadAll(fileinput)
+	stringinputcontent := string(inputcontent)
+	outputcontent, err := io.ReadAll(fileoutput)
+	stringoutputcontent := string(outputcontent)
 	input := r.Form["testcase_input"]
 	expected_output := r.Form["testcase_output"]
 	var pid int
+	if stringinputcontent != "" && input[0] == "" {
+		input[0] = stringinputcontent
+	}
+	if stringoutputcontent != "" && expected_output[0] == "" {
+		expected_output[0] = stringinputcontent
+	}
 	pid, _ = strconv.Atoi(problem_id)
 	db.InitDB()
-	_, err := db.DB.Query(`INSERT INTO TestCases
+	_, err = db.DB.Query(`INSERT INTO TestCases
 	(problem_id,
 	input,
 	expected_output) VALUES (?,?,?)`,
