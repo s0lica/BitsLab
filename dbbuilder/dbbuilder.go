@@ -70,7 +70,8 @@ func Build_databases() {
 	problem_id bigint REFERENCES Problems(ID),
 	input longtext NOT NULL,
 	expected_output longtext NOT NULL,
-	visible bool)`
+	visible bool,
+	inproblemid int)`
 	_, err = db.Exec(query)
 	query = `CREATE TABLE IF NOT EXISTS SubmissionTestResults
 	(ID bigint AUTO_INCREMENT PRIMARY KEY,
