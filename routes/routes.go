@@ -69,9 +69,13 @@ func Create_test(w http.ResponseWriter, r *http.Request) {
 	username := session.Values["username"]
 	db.InitDB()
 	problemid := r.PathValue("id")
-	query := fmt.Sprintf(`SELECT name FROM Problems WHERE ID = '%s'`, (problemid))
+	query := fmt.Sprintf(`SELECT name FROM Problems WHERE ID=%s`, (problemid))
 	var name string
-	db.DB.QueryRow(query).Scan(&name)
+	err := db.DB.QueryRow(query).Scan(&name)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println()
 	db.CloseDB()
 	data := map[string]interface{}{
 		"username":     username,

@@ -124,13 +124,26 @@ func Create_testsimpleHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	pid, _ = strconv.Atoi(problem_id)
 	db.InitDB()
+	var inproblemid int
+	var pidstring string
+	pidstring = strconv.Itoa(pid)
+	fmt.Println("problem id: " + pidstring)
+	query := fmt.Sprintf("SELECT COALESCE(MAX(inproblemid),0) FROM TestCases WHERE problem_id='%s'", (pidstring))
+	row := db.DB.QueryRow(query)
+	err = row.Scan(&inproblemid)
+	fmt.Println(err)
+	inproblemid++
+	fmt.Print("inproblemid")
+	fmt.Print(inproblemid)
 	_, err = db.DB.Query(`INSERT INTO TestCases
 	(problem_id,
 	input,
-	expected_output) VALUES (?,?,?)`,
+	expected_output,
+	inproblemid) VALUES (?,?,?,?)`,
 		(pid),
 		(input[0]),
-		(expected_output[0]))
+		(expected_output[0]),
+		(inproblemid))
 	if err != nil {
 		fmt.Println(err)
 	}
